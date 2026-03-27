@@ -185,6 +185,19 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:1.75rem
   footer{flex-direction:column;gap:1rem;text-align:center;padding:1.5rem}
   .ft-links{justify-content:center}
 }
+
+/* LIGHTBOX */
+.lightbox{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s ease}
+.lightbox.open{opacity:1;pointer-events:all}
+.lightbox-bg{position:absolute;inset:0;background:rgba(7,9,11,.96);cursor:pointer}
+.lightbox-wrap{position:relative;z-index:1;width:90vw;max-width:1200px;aspect-ratio:16/9;transform:scale(.92);transition:transform .35s ease}
+.lightbox.open .lightbox-wrap{transform:scale(1)}
+.lightbox-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+.lightbox-close{position:absolute;top:-3rem;right:0;font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.5);background:none;border:none;cursor:pointer;transition:color .2s;padding:.5rem}
+.lightbox-close:hover{color:var(--gold)}
+.lightbox-meta{position:absolute;bottom:-3rem;left:0;display:flex;gap:1.5rem;align-items:baseline}
+.lightbox-type{font-size:9px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.lightbox-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:rgba(255,255,255,.7)}
 </style>
 </head>
 <body>
@@ -262,9 +275,6 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:1.75rem
   </div>
   <div class="port-grid">
     <div class="port-item reveal" id="vid1" data-cat="social-content" onclick="playVideo('vid1','1177561380')">
-      <div class="port-video-wrap">
-        <iframe id="vid1-frame" src="" title="Momentous Golf" allow="autoplay; fullscreen" allowfullscreen></iframe>
-      </div>
       <img class="port-thumb" src="thumb-golf.jpg" alt="Momentous Golf" />
       <div class="port-play"></div>
       <div class="port-overlay">
@@ -273,9 +283,6 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:1.75rem
       </div>
     </div>
     <div class="port-item reveal d1" id="vid2" data-cat="corporate" onclick="playVideo('vid2','1177571259')">
-      <div class="port-video-wrap">
-        <iframe id="vid2-frame" src="" title="Able Recruit" allow="autoplay; fullscreen" allowfullscreen></iframe>
-      </div>
       <img class="port-thumb" src="thumb-ablerecruit.jpg" alt="Able Recruit" />
       <div class="port-play"></div>
       <div class="port-overlay">
@@ -284,9 +291,6 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:1.75rem
       </div>
     </div>
     <div class="port-item reveal d2" id="vid3" data-cat="social-content" onclick="playVideo('vid3','1177559453')">
-      <div class="port-video-wrap">
-        <iframe id="vid3-frame" src="" title="Jesus Was A Builder Too" allow="autoplay; fullscreen" allowfullscreen></iframe>
-      </div>
       <img class="port-thumb" src="thumb-builder.jpg" alt="Jesus Was A Builder Too" />
       <div class="port-play"></div>
       <div class="port-overlay">
@@ -295,9 +299,6 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:1.75rem
       </div>
     </div>
     <div class="port-item reveal d1" id="vid4" data-cat="corporate" onclick="playVideo('vid4','1177559494')">
-      <div class="port-video-wrap">
-        <iframe id="vid4-frame" src="" title="Avelle Orthodontics" allow="autoplay; fullscreen" allowfullscreen></iframe>
-      </div>
       <img class="port-thumb" src="thumb-drlarson.jpg" alt="Avelle Orthodontics" />
       <div class="port-play"></div>
       <div class="port-overlay">
@@ -306,9 +307,6 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:1.75rem
       </div>
     </div>
     <div class="port-item reveal d2" id="vid5" data-cat="podcast" onclick="playVideo('vid5','1177560549')">
-      <div class="port-video-wrap">
-        <iframe id="vid5-frame" src="" title="Podcast" allow="autoplay; fullscreen" allowfullscreen></iframe>
-      </div>
       <img class="port-thumb" src="thumb-podcast.jpg" alt="Through the Glass" />
       <div class="port-play"></div>
       <div class="port-overlay">
@@ -506,14 +504,28 @@ function filterWork(cat, btn) {
   if (visible === 3) grid.classList.add('filtered-3');
 }
 
-// Video player — click thumbnail to play Vimeo video
+// Lightbox video player
 function playVideo(itemId, videoId) {
   const item = document.getElementById(itemId);
-  if (item.classList.contains('playing')) return;
-  const frame = document.getElementById(itemId + '-frame');
-  frame.src = 'https://player.vimeo.com/video/' + videoId + '?autoplay=1&title=0&byline=0&portrait=0&badge=0';
-  item.classList.add('playing');
+  const type = item.querySelector('.port-type')?.textContent || '';
+  const name = item.querySelector('.port-name')?.textContent || '';
+  const lb = document.getElementById('lightbox');
+  const frame = document.getElementById('lightbox-frame');
+  document.getElementById('lightbox-type').textContent = type;
+  document.getElementById('lightbox-name').textContent = name;
+  frame.src = 'https://player.vimeo.com/video/' + videoId + '?autoplay=1&title=0&byline=0&portrait=0&badge=0&color=c8a96e';
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
 }
+function closeLightbox(e) {
+  if (e && e.target !== document.getElementById('lightbox') && e.target !== document.querySelector('.lightbox-bg') && e.target !== document.querySelector('.lightbox-close')) return;
+  const lb = document.getElementById('lightbox');
+  const frame = document.getElementById('lightbox-frame');
+  lb.classList.remove('open');
+  document.body.style.overflow = '';
+  setTimeout(() => { frame.src = ''; }, 350);
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox({target: document.querySelector('.lightbox-bg')}); });
 
 // Form
 function sendForm() {
@@ -532,5 +544,18 @@ function sendForm() {
     body: new URLSearchParams(Object.fromEntries(d)).toString()}).catch(() => {});
 }
 </script>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <div class="lightbox-bg"></div>
+  <div class="lightbox-wrap">
+    <button class="lightbox-close" onclick="closeLightbox()">✕ &nbsp;Close</button>
+    <iframe id="lightbox-frame" src="" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    <div class="lightbox-meta">
+      <span class="lightbox-type" id="lightbox-type"></span>
+      <span class="lightbox-name" id="lightbox-name"></span>
+    </div>
+  </div>
+</div>
 </body>
 </html>
