@@ -107,8 +107,10 @@ nav.scrolled{background:rgba(7,9,11,0.97);padding:1.25rem 4rem;border-bottom:1px
 .port-type{font-size:9px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
 .port-name{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;font-style:italic;color:var(--white)}
 .port-item.hidden{display:none}
-.port-grid.filtered-2 .port-item{aspect-ratio:16/8}
-.port-grid.filtered-3 .port-item{aspect-ratio:16/8}
+.port-grid.filtered-1 .port-item,.port-grid.filtered-2 .port-item{aspect-ratio:21/9}
+.port-grid.filtered-3 .port-item,.port-grid.filtered-4 .port-item{aspect-ratio:16/8}
+.port-grid.filtered-2{grid-template-columns:repeat(2,1fr)}
+.port-grid.filtered-1{grid-template-columns:1fr}
 .port-video-wrap{position:absolute;inset:0;background:var(--black)}
 .port-video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
 .port-thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s ease,opacity .4s ease;z-index:2}
@@ -291,11 +293,28 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:1.75rem
   </div>
   <div class="port-filters reveal">
     <button class="port-filter active" onclick="filterWork('all',this)">All</button>
+    <button class="port-filter" onclick="filterWork('adventure-sports',this)">Adventure Sports</button>
     <button class="port-filter" onclick="filterWork('social-content',this)">Social Content</button>
     <button class="port-filter" onclick="filterWork('corporate',this)">Corporate</button>
     <button class="port-filter" onclick="filterWork('podcast',this)">Podcast</button>
   </div>
   <div class="port-grid">
+    <div class="port-item reveal" id="vid6" data-cat="adventure-sports" onclick="playVideo('vid6','1177575758')">
+      <img class="port-thumb" src="thumb-roots.jpg" alt="Roots — Derek Scott" />
+      <div class="port-play"></div>
+      <div class="port-overlay">
+        <p class="port-type">Adventure Sports</p>
+        <p class="port-name">Roots — Derek Scott</p>
+      </div>
+    </div>
+    <div class="port-item reveal d1" id="vid7" data-cat="adventure-sports" onclick="playVideo('vid7','1177575223')">
+      <img class="port-thumb" src="thumb-transporting.jpg" alt="Transporting" />
+      <div class="port-play"></div>
+      <div class="port-overlay">
+        <p class="port-type">Adventure Sports</p>
+        <p class="port-name">Transporting</p>
+      </div>
+    </div>
     <div class="port-item reveal" id="vid1" data-cat="social-content" onclick="playVideo('vid1','1177561380')">
       <img class="port-thumb" src="thumb-golf.jpg" alt="Momentous Golf" />
       <div class="port-play"></div>
@@ -521,9 +540,8 @@ function filterWork(cat, btn) {
     if (show) visible++;
   });
   const grid = document.querySelector('.port-grid');
-  grid.classList.remove('filtered-2','filtered-3');
-  if (visible === 2) grid.classList.add('filtered-2');
-  if (visible === 3) grid.classList.add('filtered-3');
+  grid.classList.remove('filtered-1','filtered-2','filtered-3','filtered-4','filtered-5');
+  if (visible <= 5) grid.classList.add('filtered-' + visible);
 }
 
 // Lightbox video player
