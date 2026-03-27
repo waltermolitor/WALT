@@ -307,7 +307,7 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:1.75rem
         <p class="port-name">Roots — Derek Scott</p>
       </div>
     </div>
-    <div class="port-item reveal d1" id="vid7" data-cat="adventure-sports" data-hide-all="true" class="port-item reveal d1 hidden" onclick="playVideo('vid7','1177575223')">
+    <div class="port-item reveal d1" id="vid7" data-cat="adventure-sports" data-hide-all="true" style="display:none" onclick="playVideo('vid7','1177575223')">
       <img class="port-thumb" src="thumb-transporting.jpg" alt="Transporting" />
       <div class="port-play"></div>
       <div class="port-overlay">
@@ -538,11 +538,11 @@ function filterWork(cat, btn) {
   items.forEach(item => {
     let show;
     if (cat === 'all') {
-      // On All: hide items marked data-hide-all (Transporting)
       show = !item.dataset.hideAll;
     } else {
       show = item.dataset.cat === cat;
     }
+    item.style.display = show ? '' : 'none';
     item.classList.toggle('hidden', !show);
     if (show) visible++;
   });
