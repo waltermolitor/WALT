@@ -68,10 +68,13 @@ nav.scrolled{background:rgba(7,9,11,0.97);padding:1.25rem 4rem;border-bottom:1px
 
 /* PORTFOLIO */
 #portfolio{padding:6rem 4rem;background:var(--deep)}
-.port-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:4rem}
-.port-grid{display:grid;grid-template-columns:5fr 3fr;grid-template-rows:auto auto;gap:2px;background:var(--border)}
-.port-item{position:relative;overflow:hidden;background:var(--surface);aspect-ratio:16/9}
-.port-item:first-child{grid-row:span 2;aspect-ratio:auto}
+.port-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2.5rem}
+.port-filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:3rem}
+.port-filter{font-size:9px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;padding:.6rem 1.4rem;border:1px solid var(--border-mid);color:rgba(255,255,255,.45);background:transparent;cursor:pointer;transition:all .2s}
+.port-filter:hover{border-color:var(--gold);color:var(--gold)}
+.port-filter.active{background:var(--gold);color:var(--black);border-color:var(--gold)}
+.port-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border)}
+.port-item{position:relative;overflow:hidden;background:var(--surface);aspect-ratio:16/9;cursor:pointer}
 .port-item img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
 .port-item:hover img{transform:scale(1.04)}
 .port-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(7,9,11,.92) 0%,rgba(7,9,11,.1) 50%,transparent 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:2rem;opacity:0;transition:opacity .4s}
@@ -80,10 +83,11 @@ nav.scrolled{background:rgba(7,9,11,0.97);padding:1.25rem 4rem;border-bottom:1px
 .port-play::after{content:'';border-left:12px solid var(--gold);border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px}
 .port-item:hover .port-play{opacity:1;transform:translate(-50%,-50%) scale(1.08)}
 .port-type{font-size:9px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
-.port-name{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;font-style:italic;color:var(--white)}
-.port-video-wrap{position:relative;width:100%;height:100%;background:var(--black)}
+.port-name{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;font-style:italic;color:var(--white)}
+.port-item.hidden{display:none}
+.port-video-wrap{position:absolute;inset:0;background:var(--black)}
 .port-video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
-.port-thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s ease,opacity .4s ease;cursor:pointer;z-index:2}
+.port-thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s ease,opacity .4s ease;z-index:2}
 .port-item.playing .port-thumb{opacity:0;pointer-events:none}
 .port-item.playing .port-play{opacity:0!important}
 .port-item.playing .port-overlay{opacity:0!important}
@@ -173,7 +177,6 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:1.75rem
   .hero-scroll{display:none}
   #portfolio,#philosophy,#about,#contact{padding:5rem 1.5rem}
   .port-grid{grid-template-columns:1fr}
-  .port-item:first-child{grid-row:auto;aspect-ratio:16/9}
   #philosophy,#about,.contact-inner{grid-template-columns:1fr}
   .about-img-wrap{display:none}
   .about-stat-row{display:none}
@@ -249,41 +252,67 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:1.75rem
     </div>
     <a href="#contact" class="btn-line reveal d2">Start Your Project →</a>
   </div>
+  <div class="port-filters reveal">
+    <button class="port-filter active" onclick="filterWork('all',this)">All</button>
+    <button class="port-filter" onclick="filterWork('brand-film',this)">Brand Film</button>
+    <button class="port-filter" onclick="filterWork('social-content',this)">Social Content</button>
+    <button class="port-filter" onclick="filterWork('corporate',this)">Corporate</button>
+    <button class="port-filter" onclick="filterWork('podcast',this)">Podcast</button>
+  </div>
   <div class="port-grid">
-    <!-- VIDEO 1: Replace YOUR_VIDEO_ID_1 with the YouTube video ID -->
-    <div class="port-item reveal" id="vid1" onclick="playVideo('vid1','YOUR_VIDEO_ID_1')">
+    <div class="port-item reveal" id="vid1" data-cat="brand-film" onclick="playVideo('vid1','1177561380')">
       <div class="port-video-wrap">
         <iframe id="vid1-frame" src="" title="Momentous Golf" allow="autoplay; fullscreen" allowfullscreen></iframe>
       </div>
       <img class="port-thumb" src="port1.jpg" alt="Momentous Golf" />
       <div class="port-play"></div>
       <div class="port-overlay">
-        <p class="port-type">Brand Video</p>
+        <p class="port-type">Brand Film</p>
         <p class="port-name">Momentous Golf</p>
       </div>
     </div>
-    <!-- VIDEO 2: Replace YOUR_VIDEO_ID_2 with the YouTube video ID -->
-    <div class="port-item reveal d1" id="vid2" onclick="playVideo('vid2','YOUR_VIDEO_ID_2')">
+    <div class="port-item reveal d1" id="vid2" data-cat="brand-film" onclick="playVideo('vid2','1177559338')">
       <div class="port-video-wrap">
-        <iframe id="vid2-frame" src="" title="On Location" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        <iframe id="vid2-frame" src="" title="Able Recruit" allow="autoplay; fullscreen" allowfullscreen></iframe>
       </div>
-      <img class="port-thumb" src="port2.jpg" alt="On Location" />
+      <img class="port-thumb" src="port2.jpg" alt="Able Recruit" />
       <div class="port-play"></div>
       <div class="port-overlay">
-        <p class="port-type">Commercial Shoot</p>
-        <p class="port-name">On Location</p>
+        <p class="port-type">Brand Film</p>
+        <p class="port-name">Able Recruit</p>
       </div>
     </div>
-    <!-- VIDEO 3: Replace YOUR_VIDEO_ID_3 with the YouTube video ID -->
-    <div class="port-item reveal d2" id="vid3" onclick="playVideo('vid3','YOUR_VIDEO_ID_3')">
+    <div class="port-item reveal d2" id="vid3" data-cat="social-content" onclick="playVideo('vid3','1177559453')">
       <div class="port-video-wrap">
-        <iframe id="vid3-frame" src="" title="Momentous Golf BTS" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        <iframe id="vid3-frame" src="" title="Jesus Was A Builder Too" allow="autoplay; fullscreen" allowfullscreen></iframe>
       </div>
-      <img class="port-thumb" src="port3.jpg" alt="Momentous Golf BTS" />
+      <img class="port-thumb" src="port3.jpg" alt="Jesus Was A Builder Too" />
       <div class="port-play"></div>
       <div class="port-overlay">
-        <p class="port-type">Brand Video</p>
-        <p class="port-name">Momentous Golf — BTS</p>
+        <p class="port-type">Social Content</p>
+        <p class="port-name">Jesus Was A Builder Too</p>
+      </div>
+    </div>
+    <div class="port-item reveal d1" id="vid4" data-cat="corporate" onclick="playVideo('vid4','1177559494')">
+      <div class="port-video-wrap">
+        <iframe id="vid4-frame" src="" title="Avelle Orthodontics" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      </div>
+      <img class="port-thumb" src="port3.jpg" alt="Avelle Orthodontics" />
+      <div class="port-play"></div>
+      <div class="port-overlay">
+        <p class="port-type">Corporate</p>
+        <p class="port-name">Avelle Orthodontics</p>
+      </div>
+    </div>
+    <div class="port-item reveal d2" id="vid5" data-cat="podcast" onclick="playVideo('vid5','1177560549')">
+      <div class="port-video-wrap">
+        <iframe id="vid5-frame" src="" title="Podcast" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      </div>
+      <img class="port-thumb" src="port2.jpg" alt="Podcast" />
+      <div class="port-play"></div>
+      <div class="port-overlay">
+        <p class="port-type">Podcast</p>
+        <p class="port-name">Podcast</p>
       </div>
     </div>
   </div>
@@ -459,12 +488,25 @@ const obs = new IntersectionObserver(entries =>
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }), {threshold: 0.1});
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-// Video player — click thumbnail to play YouTube video
+// Portfolio filter
+function filterWork(cat, btn) {
+  document.querySelectorAll('.port-filter').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.port-item').forEach(item => {
+    if (cat === 'all' || item.dataset.cat === cat) {
+      item.classList.remove('hidden');
+    } else {
+      item.classList.add('hidden');
+    }
+  });
+}
+
+// Video player — click thumbnail to play Vimeo video
 function playVideo(itemId, videoId) {
   const item = document.getElementById(itemId);
   if (item.classList.contains('playing')) return;
   const frame = document.getElementById(itemId + '-frame');
-  frame.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0&modestbranding=1';
+  frame.src = 'https://player.vimeo.com/video/' + videoId + '?autoplay=1&title=0&byline=0&portrait=0&badge=0';
   item.classList.add('playing');
 }
 
