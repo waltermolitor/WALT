@@ -85,6 +85,8 @@ nav.scrolled{background:rgba(7,9,11,0.97);padding:1.25rem 4rem;border-bottom:1px
 .port-type{font-size:9px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
 .port-name{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;font-style:italic;color:var(--white)}
 .port-item.hidden{display:none}
+.port-grid.filtered-2 .port-item{aspect-ratio:16/8}
+.port-grid.filtered-3 .port-item{aspect-ratio:16/8}
 .port-video-wrap{position:absolute;inset:0;background:var(--black)}
 .port-video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
 .port-thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s ease,opacity .4s ease;z-index:2}
@@ -254,7 +256,6 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:1.75rem
   </div>
   <div class="port-filters reveal">
     <button class="port-filter active" onclick="filterWork('all',this)">All</button>
-    <button class="port-filter" onclick="filterWork('brand-film',this)">Brand Film</button>
     <button class="port-filter" onclick="filterWork('social-content',this)">Social Content</button>
     <button class="port-filter" onclick="filterWork('corporate',this)">Corporate</button>
     <button class="port-filter" onclick="filterWork('podcast',this)">Podcast</button>
@@ -271,14 +272,14 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:1.75rem
         <p class="port-name">Momentous Golf</p>
       </div>
     </div>
-    <div class="port-item reveal d1" id="vid2" data-cat="brand-film" onclick="playVideo('vid2','1177559338')">
+    <div class="port-item reveal d1" id="vid2" data-cat="corporate" onclick="playVideo('vid2','1177559338')">
       <div class="port-video-wrap">
         <iframe id="vid2-frame" src="" title="Able Recruit" allow="autoplay; fullscreen" allowfullscreen></iframe>
       </div>
       <img class="port-thumb" src="port1.jpg" alt="Able Recruit" />
       <div class="port-play"></div>
       <div class="port-overlay">
-        <p class="port-type">Brand Film</p>
+        <p class="port-type">Corporate</p>
         <p class="port-name">Able Recruit</p>
       </div>
     </div>
@@ -297,7 +298,7 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:1.75rem
       <div class="port-video-wrap">
         <iframe id="vid4-frame" src="" title="Avelle Orthodontics" allow="autoplay; fullscreen" allowfullscreen></iframe>
       </div>
-      <img class="port-thumb" src="thumb-corporate.jpg" alt="Avelle Orthodontics" />
+      <img class="port-thumb" src="thumb-drlarson.jpg" alt="Avelle Orthodontics" />
       <div class="port-play"></div>
       <div class="port-overlay">
         <p class="port-type">Corporate</p>
@@ -308,18 +309,11 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:1.75rem
       <div class="port-video-wrap">
         <iframe id="vid5-frame" src="" title="Podcast" allow="autoplay; fullscreen" allowfullscreen></iframe>
       </div>
-      <img class="port-thumb" src="port2.jpg" alt="Through the Glass" />
+      <img class="port-thumb" src="thumb-podcast.jpg" alt="Through the Glass" />
       <div class="port-play"></div>
       <div class="port-overlay">
         <p class="port-type">Podcast</p>
         <p class="port-name">Through the Glass</p>
-      </div>
-    </div>
-    <div class="port-item reveal d3" style="cursor:default">
-      <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:1.5rem;padding:2rem;text-align:center">
-        <div class="section-tag" style="justify-content:center">Work With Us</div>
-        <h3 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,4vw,3.5rem);line-height:.95;letter-spacing:.04em;color:var(--white)">LET'S BUILD<br><span style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold);font-size:clamp(1.8rem,3.5vw,3rem)">something.</span></h3>
-        <a href="#contact" class="btn-gold" onclick="event.stopPropagation()">Start a Project →</a>
       </div>
     </div>
   </div>
@@ -499,13 +493,17 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 function filterWork(cat, btn) {
   document.querySelectorAll('.port-filter').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  document.querySelectorAll('.port-item').forEach(item => {
-    if (cat === 'all' || item.dataset.cat === cat) {
-      item.classList.remove('hidden');
-    } else {
-      item.classList.add('hidden');
-    }
+  const items = document.querySelectorAll('.port-item');
+  let visible = 0;
+  items.forEach(item => {
+    const show = cat === 'all' || item.dataset.cat === cat;
+    item.classList.toggle('hidden', !show);
+    if (show) visible++;
   });
+  const grid = document.querySelector('.port-grid');
+  grid.classList.remove('filtered-2','filtered-3');
+  if (visible === 2) grid.classList.add('filtered-2');
+  if (visible === 3) grid.classList.add('filtered-3');
 }
 
 // Video player — click thumbnail to play Vimeo video
