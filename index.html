@@ -81,6 +81,12 @@ nav.scrolled{background:rgba(7,9,11,0.97);padding:1.25rem 4rem;border-bottom:1px
 .port-item:hover .port-play{opacity:1;transform:translate(-50%,-50%) scale(1.08)}
 .port-type{font-size:9px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
 .port-name{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;font-style:italic;color:var(--white)}
+.port-video-wrap{position:relative;width:100%;height:100%;background:var(--black)}
+.port-video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+.port-thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s ease,opacity .4s ease;cursor:pointer;z-index:2}
+.port-item.playing .port-thumb{opacity:0;pointer-events:none}
+.port-item.playing .port-play{opacity:0!important}
+.port-item.playing .port-overlay{opacity:0!important}
 
 /* PHILOSOPHY */
 #philosophy{padding:8rem 4rem;background:var(--black);display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:center}
@@ -244,24 +250,36 @@ footer{background:var(--deep);border-top:1px solid var(--border);padding:1.75rem
     <a href="#contact" class="btn-line reveal d2">Start Your Project →</a>
   </div>
   <div class="port-grid">
-    <div class="port-item reveal">
-      <img src="port1.jpg" alt="Momentous Golf" loading="lazy" />
+    <!-- VIDEO 1: Replace YOUR_VIDEO_ID_1 with the YouTube video ID -->
+    <div class="port-item reveal" id="vid1" onclick="playVideo('vid1','YOUR_VIDEO_ID_1')">
+      <div class="port-video-wrap">
+        <iframe id="vid1-frame" src="" title="Momentous Golf" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      </div>
+      <img class="port-thumb" src="port1.jpg" alt="Momentous Golf" />
       <div class="port-play"></div>
       <div class="port-overlay">
-        <p class="port-type">Brand Photography</p>
+        <p class="port-type">Brand Video</p>
         <p class="port-name">Momentous Golf</p>
       </div>
     </div>
-    <div class="port-item reveal d1">
-      <img src="port2.jpg" alt="On Location" loading="lazy" />
+    <!-- VIDEO 2: Replace YOUR_VIDEO_ID_2 with the YouTube video ID -->
+    <div class="port-item reveal d1" id="vid2" onclick="playVideo('vid2','YOUR_VIDEO_ID_2')">
+      <div class="port-video-wrap">
+        <iframe id="vid2-frame" src="" title="On Location" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      </div>
+      <img class="port-thumb" src="port2.jpg" alt="On Location" />
       <div class="port-play"></div>
       <div class="port-overlay">
         <p class="port-type">Commercial Shoot</p>
         <p class="port-name">On Location</p>
       </div>
     </div>
-    <div class="port-item reveal d2">
-      <img src="port3.jpg" alt="Momentous Golf BTS" loading="lazy" />
+    <!-- VIDEO 3: Replace YOUR_VIDEO_ID_3 with the YouTube video ID -->
+    <div class="port-item reveal d2" id="vid3" onclick="playVideo('vid3','YOUR_VIDEO_ID_3')">
+      <div class="port-video-wrap">
+        <iframe id="vid3-frame" src="" title="Momentous Golf BTS" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      </div>
+      <img class="port-thumb" src="port3.jpg" alt="Momentous Golf BTS" />
       <div class="port-play"></div>
       <div class="port-overlay">
         <p class="port-type">Brand Video</p>
@@ -440,6 +458,15 @@ window.addEventListener('scroll', () => {
 const obs = new IntersectionObserver(entries =>
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }), {threshold: 0.1});
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Video player — click thumbnail to play YouTube video
+function playVideo(itemId, videoId) {
+  const item = document.getElementById(itemId);
+  if (item.classList.contains('playing')) return;
+  const frame = document.getElementById(itemId + '-frame');
+  frame.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0&modestbranding=1';
+  item.classList.add('playing');
+}
 
 // Form
 function sendForm() {
