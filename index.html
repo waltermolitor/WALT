@@ -277,8 +277,10 @@
     }
 
     /* Thumbnails */
-    /* 1: Real Estate Short */
-    .work-item:nth-child(1) .work-item-bg { background-image: url('https://i.vimeocdn.com/video/2170798089-f6d3942007fae9145bef794a40015be6f817c5767871c3e2a15b75211734b1e4-d_1280?region=us'); }
+    /* 1: Colleen Quigley */
+    .work-item:nth-child(1) .work-item-bg { background-image: url('https://i.vimeocdn.com/video/2170803316-d79e4bfeab70c087d3b4f73080f9e3575d028acf18d73b16ce6c30ae270093e4-d_1280?region=us'); }
+    /* 9: Real Estate Short */
+    .work-item:nth-child(9) .work-item-bg { background-image: url('https://i.vimeocdn.com/video/2170798089-f6d3942007fae9145bef794a40015be6f817c5767871c3e2a15b75211734b1e4-d_1280?region=us'); }
     /* 2: Able Recruit Brand Film */
     .work-item:nth-child(2) .work-item-bg { background-image: url('https://i.vimeocdn.com/video/2141215988-2ccdb8ea1385e2bb3d3c8f04b8fb7c2eb12872d35f928b6ead5a0db1959d3767-d_1280?region=us'); }
     /* 3: Real Estate Film */
@@ -878,7 +880,8 @@
       .work-item:nth-child(5),
       .work-item:nth-child(6),
       .work-item:nth-child(7),
-      .work-item:nth-child(8) { grid-column: span 1; aspect-ratio: 16/10; }
+      .work-item:nth-child(8),
+      .work-item:nth-child(9) { grid-column: span 1; aspect-ratio: 16/10; }
       .testimonials-videos { grid-template-columns: 1fr; }
       .testimonial-quote-block { padding: 40px 28px; }
       .testimonial-stat { flex-direction: column; gap: 24px; }
@@ -932,7 +935,7 @@
         <div class="work-filters">
           <button class="filter-btn active">All</button>
           <button class="filter-btn">Blue Collar</button>
-          <button class="filter-btn">Outdoor Adventure</button>
+          <button class="filter-btn">Adventure Sports</button>
           <button class="filter-btn">Corporate</button>
           <button class="filter-btn">Real Estate</button>
         </div>
@@ -940,11 +943,11 @@
 
       <div class="work-grid">
 
-        <!-- 1: Real Estate Short — real-estate -->
-        <div class="work-item" data-vimeo="1202913930" data-category="real-estate">
+        <!-- 1: Colleen Quigley — outdoor/adventure sports -->
+        <div class="work-item" data-vimeo="1202930062" data-category="outdoor">
           <div class="work-item-bg"></div>
           <div class="work-item-label">
-            <div class="work-item-title">Real Estate Short</div>
+            <div class="work-item-title">Colleen Quigley</div>
           </div>
           <div class="work-item-overlay"><div class="play-ring"></div></div>
         </div>
@@ -1008,6 +1011,15 @@
           <div class="work-item-bg"></div>
           <div class="work-item-label">
             <div class="work-item-title">Brand Film</div>
+          </div>
+          <div class="work-item-overlay"><div class="play-ring"></div></div>
+        </div>
+
+        <!-- 9: Real Estate Short — real-estate -->
+        <div class="work-item" data-vimeo="1202913930" data-category="real-estate">
+          <div class="work-item-bg"></div>
+          <div class="work-item-label">
+            <div class="work-item-title">Real Estate Short</div>
           </div>
           <div class="work-item-overlay"><div class="play-ring"></div></div>
         </div>
@@ -1271,7 +1283,7 @@
     const categoryMap = {
       'All': null,
       'Blue Collar': 'blue-collar',
-      'Outdoor Adventure': 'outdoor',
+      'Adventure Sports': 'outdoor',
       'Corporate': 'corporate',
       'Real Estate': 'real-estate'
     };
