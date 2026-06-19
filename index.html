@@ -1015,8 +1015,8 @@
           <div class="work-item-overlay"><div class="play-ring"></div></div>
         </div>
 
-        <!-- 9: Real Estate Short — real-estate -->
-        <div class="work-item" data-vimeo="1202913930" data-category="real-estate">
+        <!-- 9: Real Estate Short — real-estate-only (hidden from All) -->
+        <div class="work-item" data-vimeo="1202913930" data-category="real-estate-only">
           <div class="work-item-bg"></div>
           <div class="work-item-label">
             <div class="work-item-title">Real Estate Short</div>
@@ -1279,9 +1279,9 @@
       navbar.classList.toggle('scrolled', window.scrollY > 80);
     });
 
-    // Hide real-estate items on initial load (All is default)
+    // Hide real-estate-only items on initial load (All is default)
     document.querySelectorAll('.work-item').forEach(item => {
-      if (item.dataset.category === 'real-estate') item.style.display = 'none';
+      if (item.dataset.category === 'real-estate-only') item.style.display = 'none';
     });
 
     // Filter buttons
@@ -1301,8 +1301,11 @@
         const filterVal = categoryMap[btn.textContent.trim()];
         document.querySelectorAll('.work-item').forEach(item => {
           if (filterVal === null) {
-            // "All" — show everything except real-estate
-            item.style.display = item.dataset.category === 'real-estate' ? 'none' : '';
+            // "All" — show everything except real-estate-only
+            item.style.display = item.dataset.category === 'real-estate-only' ? 'none' : '';
+          } else if (filterVal === 'real-estate') {
+            // Real Estate — show both real-estate and real-estate-only
+            item.style.display = (item.dataset.category === 'real-estate' || item.dataset.category === 'real-estate-only') ? '' : 'none';
           } else {
             item.style.display = item.dataset.category === filterVal ? '' : 'none';
           }
