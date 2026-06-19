@@ -1295,10 +1295,11 @@
 
         const filterVal = categoryMap[btn.textContent.trim()];
         document.querySelectorAll('.work-item').forEach(item => {
-          if (!filterVal || item.dataset.category === filterVal) {
-            item.style.display = '';
+          if (filterVal === null) {
+            // "All" — show everything except real-estate
+            item.style.display = item.dataset.category === 'real-estate' ? 'none' : '';
           } else {
-            item.style.display = 'none';
+            item.style.display = item.dataset.category === filterVal ? '' : 'none';
           }
         });
       });
