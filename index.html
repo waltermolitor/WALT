@@ -1279,6 +1279,11 @@
       navbar.classList.toggle('scrolled', window.scrollY > 80);
     });
 
+    // Hide real-estate items on initial load (All is default)
+    document.querySelectorAll('.work-item').forEach(item => {
+      if (item.dataset.category === 'real-estate') item.style.display = 'none';
+    });
+
     // Filter buttons
     const categoryMap = {
       'All': null,
