@@ -263,15 +263,8 @@
       cursor: pointer;
       aspect-ratio: 16/10;
     }
-    /* Row 1: two equal halves */
-    .work-item:nth-child(1) { grid-column: span 6; }
-    .work-item:nth-child(2) { grid-column: span 6; }
-    /* Row 2: two equal halves */
-    .work-item:nth-child(3) { grid-column: span 6; }
-    .work-item:nth-child(4) { grid-column: span 6; }
-    /* Row 3: two equal halves */
-    .work-item:nth-child(5) { grid-column: span 6; }
-    .work-item:nth-child(6) { grid-column: span 6; }
+    .work-item:nth-child(odd)  { grid-column: span 6; }
+    .work-item:nth-child(even) { grid-column: span 6; }
 
     .work-item-bg {
       width: 100%;
@@ -279,21 +272,27 @@
       position: absolute;
       inset: 0;
       transition: transform 0.7s ease;
+      background-size: cover;
+      background-position: center;
     }
-    /* Thumbnails from Vimeo */
-    .work-item-bg { background-size: cover; background-position: center; }
-    /* 1: Momentus Sports — Social Series */
-    .work-item:nth-child(1) .work-item-bg { background-image: url('https://i.vimeocdn.com/video/2141216205-848b7aef886da0af45af3a12ee922b0e4a9441bcfaa1107f232c3344b8bdc1b0-d_1280?region=us'); }
-    /* 2: Able Recruit — Brand Film */
+
+    /* Thumbnails */
+    /* 1: Real Estate Short */
+    .work-item:nth-child(1) .work-item-bg { background-color: var(--gray-mid); }
+    /* 2: Able Recruit Brand Film */
     .work-item:nth-child(2) .work-item-bg { background-image: url('https://i.vimeocdn.com/video/2141215988-2ccdb8ea1385e2bb3d3c8f04b8fb7c2eb12872d35f928b6ead5a0db1959d3767-d_1280?region=us'); }
-    /* 3: Contractor */
-    .work-item:nth-child(3) .work-item-bg { background-image: url('https://i.vimeocdn.com/video/2141216441-5b9677385e180540630b5a371b6e204c10746b2f20327c9cb6b30dbb8432624b-d_1280?region=us'); }
-    /* 4: Avelle Orthodontics — Educational */
-    .work-item:nth-child(4) .work-item-bg { background-image: url('https://i.vimeocdn.com/video/2138920343-4559ad30a70bd1ebb5eea29c4a3df604b5ec8487f6bf93e529e7b42f61da8edb-d_1280?region=us'); }
-    /* 5: Through the Glass — Podcast */
+    /* 3: Real Estate Film */
+    .work-item:nth-child(3) .work-item-bg { background-image: url('https://i.vimeocdn.com/video/2170781838-2d875885c840e2b0810a0dbf3afb6031c2522b33950840fdf63c5aa6af0313bf-d_1280?region=us'); }
+    /* 4: Joggy Commercial */
+    .work-item:nth-child(4) .work-item-bg { background-image: url('https://i.vimeocdn.com/video/2170781113-0765a439cfa286c88beeb1093ac235891446c06f23732a18ead9cf9eda83494b-d_1280?region=us'); }
+    /* 5: Podcast */
     .work-item:nth-child(5) .work-item-bg { background-image: url('https://i.vimeocdn.com/video/2138921677-8d150ecec6ed60e9383154d242a463caaf93ccb73096e42af02cbfb5eebb0af3-d_1280?region=us'); }
-    /* 6: ROOTS — Adventure */
+    /* 6: ROOTS Short Film */
     .work-item:nth-child(6) .work-item-bg { background-image: url('https://i.vimeocdn.com/video/2141215873-635b4555a82d0c8c3f6bc524df9cb125319f54abdf633088c9214e826b8f0828-d_1280?region=us'); }
+    /* 7: Social Series (contractor) */
+    .work-item:nth-child(7) .work-item-bg { background-image: url('https://i.vimeocdn.com/video/2141216441-5b9677385e180540630b5a371b6e204c10746b2f20327c9cb6b30dbb8432624b-d_1280?region=us'); }
+    /* 8: New Brand Film */
+    .work-item:nth-child(8) .work-item-bg { background-image: url('https://i.vimeocdn.com/video/2170782024-396161eef15728818139655aa75b6e6d6ad271a053c9a2f601b0b66e3e5a1b77-d_1280?region=us'); }
 
     .work-item:hover .work-item-bg { transform: scale(1.05); }
 
@@ -443,6 +442,140 @@
       cursor: default;
     }
     .client-name:hover { color: rgba(242,239,233,0.9); }
+
+    /* ─── TESTIMONIALS ─── */
+    #testimonials {
+      background: var(--black);
+      padding: 120px 0;
+      border-top: 1px solid var(--border);
+    }
+    .testimonials-header {
+      margin-bottom: 56px;
+    }
+    .testimonials-videos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+      margin-bottom: 64px;
+    }
+    .testimonial-item {
+      position: relative;
+      overflow: hidden;
+      background: var(--gray-mid);
+      cursor: pointer;
+      aspect-ratio: 16/9;
+    }
+    .testimonial-item-bg {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.7s ease;
+    }
+    .testimonial-item:nth-child(1) .testimonial-item-bg {
+      background-image: url('https://i.vimeocdn.com/video/2170781535-70f8325d20eaa91f1048b9227d810f4efc0c366338203b8a5409f4a5d1d76354-d_1280?region=us');
+    }
+    .testimonial-item:nth-child(2) .testimonial-item-bg {
+      background-image: url('https://i.vimeocdn.com/video/2170783300-273e92a5046081c50e19bca249e01ced4dde2a3498e558f8ecc7ef6c96ca2638-d_1280?region=us');
+    }
+    .testimonial-item:hover .testimonial-item-bg { transform: scale(1.04); }
+    .testimonial-item-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(13,18,66,0.45);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .testimonial-item:hover .testimonial-item-overlay { opacity: 1; }
+    .testimonial-item-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 20px 22px 22px;
+      background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, transparent 100%);
+    }
+    .testimonial-item-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .testimonial-item-role {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(242,239,233,0.5);
+      margin-top: 4px;
+    }
+
+    /* Quote highlight */
+    .testimonial-quote-block {
+      background: var(--navy);
+      padding: 64px 72px;
+      position: relative;
+      transition: background 0.35s;
+    }
+    .testimonial-quote-block:hover { background: var(--navy-dark); }
+    .testimonial-quote-accent {
+      width: 48px;
+      height: 3px;
+      background: rgba(242,239,233,0.4);
+      margin-bottom: 36px;
+    }
+    .testimonial-quote-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(22px, 2.6vw, 36px);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.4;
+      color: var(--white);
+      max-width: 880px;
+    }
+    .testimonial-quote-attribution {
+      margin-top: 36px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .testimonial-quote-name {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+    .testimonial-quote-company {
+      font-size: 11px;
+      color: rgba(242,239,233,0.45);
+      letter-spacing: 0.08em;
+      margin-top: 4px;
+    }
+    .testimonial-stat {
+      margin-top: 28px;
+      display: flex;
+      align-items: center;
+      gap: 48px;
+    }
+    .testimonial-stat-item {}
+    .testimonial-stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+    }
+    .testimonial-stat-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(242,239,233,0.45);
+      margin-top: 6px;
+    }
 
     /* ─── ABOUT ─── */
     #about {
@@ -704,7 +837,7 @@
     }
     .video-modal-close:hover { color: #fff; }
 
-    /* Mobile: fill as much screen as possible */
+    /* Mobile */
     @media (max-width: 768px) {
       .video-modal {
         padding: 0;
@@ -743,7 +876,12 @@
       .work-item:nth-child(3),
       .work-item:nth-child(4),
       .work-item:nth-child(5),
-      .work-item:nth-child(6) { grid-column: span 1; aspect-ratio: 16/10; }
+      .work-item:nth-child(6),
+      .work-item:nth-child(7),
+      .work-item:nth-child(8) { grid-column: span 1; aspect-ratio: 16/10; }
+      .testimonials-videos { grid-template-columns: 1fr; }
+      .testimonial-quote-block { padding: 40px 28px; }
+      .testimonial-stat { flex-direction: column; gap: 24px; }
       .services-layout, .about-layout, .contact-layout { grid-template-columns: 1fr; gap: 48px; }
       .work-header { flex-direction: column; align-items: flex-start; gap: 20px; }
       .footer-inner { flex-direction: column; gap: 24px; text-align: center; }
@@ -793,25 +931,25 @@
         </div>
         <div class="work-filters">
           <button class="filter-btn active">All</button>
-          <button class="filter-btn">Short Film</button>
+          <button class="filter-btn">Brand Film</button>
           <button class="filter-btn">Social Content</button>
-          <button class="filter-btn">Corporate</button>
           <button class="filter-btn">Podcast</button>
         </div>
       </div>
 
       <div class="work-grid">
 
-        <!-- Row 1 -->
-        <div class="work-item" data-vimeo="1177561380" data-category="social">
+        <!-- 1: Real Estate Short — social -->
+        <div class="work-item" data-vimeo="1202913930" data-category="social">
           <div class="work-item-bg"></div>
           <div class="work-item-label">
-            <div class="work-item-title">Social Series</div>
+            <div class="work-item-title">Real Estate Short</div>
           </div>
           <div class="work-item-overlay"><div class="play-ring"></div></div>
         </div>
 
-        <div class="work-item" data-vimeo="1177571259" data-category="corporate">
+        <!-- 2: Able Recruit Brand Film — brand-film -->
+        <div class="work-item" data-vimeo="1177571259" data-category="brand-film">
           <div class="work-item-bg"></div>
           <div class="work-item-label">
             <div class="work-item-title">Brand Film</div>
@@ -819,24 +957,25 @@
           <div class="work-item-overlay"><div class="play-ring"></div></div>
         </div>
 
-        <!-- Row 2 -->
-        <div class="work-item" data-vimeo="1177559453" data-category="social">
+        <!-- 3: Real Estate Film — social -->
+        <div class="work-item" data-vimeo="1202914829" data-category="social">
           <div class="work-item-bg"></div>
           <div class="work-item-label">
-            <div class="work-item-title">Several Series</div>
+            <div class="work-item-title">Real Estate Film</div>
           </div>
           <div class="work-item-overlay"><div class="play-ring"></div></div>
         </div>
 
-        <div class="work-item" data-vimeo="1177559494" data-category="corporate">
+        <!-- 4: Joggy Commercial — brand-film -->
+        <div class="work-item" data-vimeo="1202914383" data-category="brand-film">
           <div class="work-item-bg"></div>
           <div class="work-item-label">
-            <div class="work-item-title">Educational Video</div>
+            <div class="work-item-title">Commercial</div>
           </div>
           <div class="work-item-overlay"><div class="play-ring"></div></div>
         </div>
 
-        <!-- Row 3 -->
+        <!-- 5: Podcast -->
         <div class="work-item" data-vimeo="1177560549" data-category="podcast">
           <div class="work-item-bg"></div>
           <div class="work-item-label">
@@ -845,10 +984,29 @@
           <div class="work-item-overlay"><div class="play-ring"></div></div>
         </div>
 
-        <div class="work-item" data-vimeo="1177575758" data-category="adventure">
+        <!-- 6: ROOTS — brand-film -->
+        <div class="work-item" data-vimeo="1177575758" data-category="brand-film">
           <div class="work-item-bg"></div>
           <div class="work-item-label">
             <div class="work-item-title">Short Film</div>
+          </div>
+          <div class="work-item-overlay"><div class="play-ring"></div></div>
+        </div>
+
+        <!-- 7: Social Series (contractor) — social -->
+        <div class="work-item" data-vimeo="1177559453" data-category="social">
+          <div class="work-item-bg"></div>
+          <div class="work-item-label">
+            <div class="work-item-title">Social Series</div>
+          </div>
+          <div class="work-item-overlay"><div class="play-ring"></div></div>
+        </div>
+
+        <!-- 8: Brand Film (today) — brand-film -->
+        <div class="work-item" data-vimeo="1202914977" data-category="brand-film">
+          <div class="work-item-bg"></div>
+          <div class="work-item-label">
+            <div class="work-item-title">Brand Film</div>
           </div>
           <div class="work-item-overlay"><div class="play-ring"></div></div>
         </div>
@@ -870,6 +1028,62 @@
         <span class="client-name">Canyon Cleaning Solutions</span>
         <span class="client-name">Real Reel Estate</span>
       </div>
+    </div>
+  </section>
+
+  <!-- ─── TESTIMONIALS ─── -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="testimonials-header">
+        <p class="section-label">Client Results</p>
+        <h2 class="section-heading">What clients <em>say.</em></h2>
+      </div>
+
+      <div class="testimonials-videos">
+
+        <div class="testimonial-item" data-vimeo="1202914547">
+          <div class="testimonial-item-bg"></div>
+          <div class="testimonial-item-overlay"><div class="play-ring"></div></div>
+          <div class="testimonial-item-label">
+            <div class="testimonial-item-name">Trace Walters</div>
+            <div class="testimonial-item-role">Walters Renovations</div>
+          </div>
+        </div>
+
+        <div class="testimonial-item" data-vimeo="1202915820">
+          <div class="testimonial-item-bg"></div>
+          <div class="testimonial-item-overlay"><div class="play-ring"></div></div>
+          <div class="testimonial-item-label">
+            <div class="testimonial-item-name">Canyon Cleaning Solutions</div>
+            <div class="testimonial-item-role">Client Testimonial</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="testimonial-quote-block">
+        <div class="testimonial-quote-accent"></div>
+        <blockquote class="testimonial-quote-text">"In 2025 we were at $700,000. Seven months after hiring Molitor Media we've done $1.5 million in revenue, and that can be attributed to the videos and social presence we've gained from Molitor Media."</blockquote>
+        <div class="testimonial-quote-attribution">
+          <div class="testimonial-quote-name">Trace Walters</div>
+          <div class="testimonial-quote-company">Walters Renovations</div>
+        </div>
+        <div class="testimonial-stat">
+          <div class="testimonial-stat-item">
+            <div class="testimonial-stat-number">$700K</div>
+            <div class="testimonial-stat-label">Revenue Before</div>
+          </div>
+          <div class="testimonial-stat-item">
+            <div class="testimonial-stat-number">$1.5M</div>
+            <div class="testimonial-stat-label">Revenue After · 7 Months</div>
+          </div>
+          <div class="testimonial-stat-item">
+            <div class="testimonial-stat-number">2×</div>
+            <div class="testimonial-stat-label">Growth with Molitor Media</div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -1000,7 +1214,6 @@
         <span class="footer-logo">Molitor.</span>
         <ul class="footer-links">
           <li><a href="#work">Work</a></li>
-
           <li><a href="#about">About</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -1054,9 +1267,8 @@
     // Filter buttons
     const categoryMap = {
       'All': null,
-      'Short Film': 'adventure',
+      'Brand Film': 'brand-film',
       'Social Content': 'social',
-      'Corporate': 'corporate',
       'Podcast': 'podcast'
     };
 
@@ -1076,12 +1288,12 @@
       });
     });
 
-    // Video modal
+    // Video modal — work items + testimonial items
     const modal = document.getElementById('videoModal');
     const iframe = document.getElementById('modalIframe');
     const closeBtn = document.getElementById('modalClose');
 
-    document.querySelectorAll('.work-item[data-vimeo]').forEach(item => {
+    document.querySelectorAll('[data-vimeo]').forEach(item => {
       item.addEventListener('click', () => {
         const id = item.dataset.vimeo;
         iframe.src = `https://player.vimeo.com/video/${id}?autoplay=1&color=4A6CF7&title=0&byline=0&portrait=0`;
