@@ -276,25 +276,7 @@
       background-position: center;
     }
 
-    /* Thumbnails */
-    /* 1: Colleen Quigley */
-    .work-item:nth-child(1) .work-item-bg { background-image: url('https://i.vimeocdn.com/video/2170803316-d79e4bfeab70c087d3b4f73080f9e3575d028acf18d73b16ce6c30ae270093e4-d_1280?region=us'); }
-    /* 9: Real Estate Short */
-    .work-item:nth-child(9) .work-item-bg { background-image: url('https://i.vimeocdn.com/video/2170798089-f6d3942007fae9145bef794a40015be6f817c5767871c3e2a15b75211734b1e4-d_1280?region=us'); }
-    /* 2: Able Recruit Brand Film */
-    .work-item:nth-child(2) .work-item-bg { background-image: url('https://i.vimeocdn.com/video/2141215988-2ccdb8ea1385e2bb3d3c8f04b8fb7c2eb12872d35f928b6ead5a0db1959d3767-d_1280?region=us'); }
-    /* 3: Real Estate Film */
-    .work-item:nth-child(3) .work-item-bg { background-image: url('https://i.vimeocdn.com/video/2170798306-1f64d9668936c0193a88f2ebcb1eb03c430074e9a2588edecb388f2a7b4bce07-d_1280?region=us'); }
-    /* 4: Joggy Commercial */
-    .work-item:nth-child(4) .work-item-bg { background-image: url('https://i.vimeocdn.com/video/2170798416-2660f310720d3ce4948702b792409c6ce8599cfca06cbc104d2269691db955fb-d_1280?region=us'); }
-    /* 5: Podcast */
-    .work-item:nth-child(5) .work-item-bg { background-image: url('https://i.vimeocdn.com/video/2138921677-8d150ecec6ed60e9383154d242a463caaf93ccb73096e42af02cbfb5eebb0af3-d_1280?region=us'); }
-    /* 6: ROOTS Short Film */
-    .work-item:nth-child(6) .work-item-bg { background-image: url('https://i.vimeocdn.com/video/2141215873-635b4555a82d0c8c3f6bc524df9cb125319f54abdf633088c9214e826b8f0828-d_1280?region=us'); }
-    /* 7: Social Series (contractor) */
-    .work-item:nth-child(7) .work-item-bg { background-image: url('https://i.vimeocdn.com/video/2141216441-5b9677385e180540630b5a371b6e204c10746b2f20327c9cb6b30dbb8432624b-d_1280?region=us'); }
-    /* 8: New Brand Film */
-    .work-item:nth-child(8) .work-item-bg { background-image: url('https://i.vimeocdn.com/video/2170798164-73dafe48c08dc94729b116c75040e2a811ef27d28d0d0a65d42a767b5dfeb356-d_1280?region=us'); }
+    /* Thumbnails are set inline per .work-item-bg via style="background-image:..." */
 
     .work-item:hover .work-item-bg { transform: scale(1.05); }
 
@@ -872,16 +854,7 @@
       .nav-links { display: none; }
       #statement { padding: 80px 24px; }
       .work-grid { grid-template-columns: 1fr; }
-      .work-item,
-      .work-item:nth-child(1),
-      .work-item:nth-child(2),
-      .work-item:nth-child(3),
-      .work-item:nth-child(4),
-      .work-item:nth-child(5),
-      .work-item:nth-child(6),
-      .work-item:nth-child(7),
-      .work-item:nth-child(8),
-      .work-item:nth-child(9) { grid-column: span 1; aspect-ratio: 16/10; }
+      .work-item { grid-column: span 1; aspect-ratio: 16/10; }
       .testimonials-videos { grid-template-columns: 1fr; }
       .testimonial-quote-block { padding: 40px 28px; }
       .testimonial-stat { flex-direction: column; gap: 24px; }
@@ -933,93 +906,129 @@
           <h2 class="section-heading">Our <em>work.</em></h2>
         </div>
         <div class="work-filters">
-          <button class="filter-btn active">All</button>
-          <button class="filter-btn">Blue Collar</button>
-          <button class="filter-btn">Adventure Sports</button>
-          <button class="filter-btn">Corporate</button>
-          <button class="filter-btn">Real Estate</button>
+          <button class="filter-btn active" data-tab="main">Our Work</button>
+          <button class="filter-btn" data-tab="other">Other</button>
         </div>
       </div>
 
       <div class="work-grid">
 
-        <!-- 1: Colleen Quigley — outdoor/adventure sports -->
-        <div class="work-item" data-vimeo="1202930062" data-category="outdoor">
-          <div class="work-item-bg"></div>
-          <div class="work-item-label">
-            <div class="work-item-title">Colleen Quigley</div>
-          </div>
-          <div class="work-item-overlay"><div class="play-ring"></div></div>
-        </div>
-
-        <!-- 2: Able Recruit Brand Film — corporate -->
-        <div class="work-item" data-vimeo="1177571259" data-category="corporate">
-          <div class="work-item-bg"></div>
+        <div class="work-item" data-vimeo="1202914977" data-tab="main">
+          <div class="work-item-bg" style="background-image:url('https://i.vimeocdn.com/video/2172153561-4d9148882c9050be06e35a82c12d30b7f85ce1ddd623571afdd3255b6057a630-d_1280?region=us')"></div>
           <div class="work-item-label">
             <div class="work-item-title">Brand Film</div>
           </div>
           <div class="work-item-overlay"><div class="play-ring"></div></div>
         </div>
 
-        <!-- 3: Real Estate Film — real-estate -->
-        <div class="work-item" data-vimeo="1202914829" data-category="real-estate">
-          <div class="work-item-bg"></div>
-          <div class="work-item-label">
-            <div class="work-item-title">Real Estate Film</div>
-          </div>
-          <div class="work-item-overlay"><div class="play-ring"></div></div>
-        </div>
-
-        <!-- 4: Joggy Commercial — outdoor -->
-        <div class="work-item" data-vimeo="1202914383" data-category="outdoor">
-          <div class="work-item-bg"></div>
-          <div class="work-item-label">
-            <div class="work-item-title">Joggy Commercial</div>
-          </div>
-          <div class="work-item-overlay"><div class="play-ring"></div></div>
-        </div>
-
-        <!-- 5: Podcast — corporate -->
-        <div class="work-item" data-vimeo="1177560549" data-category="corporate">
-          <div class="work-item-bg"></div>
-          <div class="work-item-label">
-            <div class="work-item-title">Podcast</div>
-          </div>
-          <div class="work-item-overlay"><div class="play-ring"></div></div>
-        </div>
-
-        <!-- 6: ROOTS — outdoor -->
-        <div class="work-item" data-vimeo="1177575758" data-category="outdoor">
-          <div class="work-item-bg"></div>
-          <div class="work-item-label">
-            <div class="work-item-title">Short Film</div>
-          </div>
-          <div class="work-item-overlay"><div class="play-ring"></div></div>
-        </div>
-
-        <!-- 7: Project Update — blue-collar -->
-        <div class="work-item" data-vimeo="1177559453" data-category="blue-collar">
-          <div class="work-item-bg"></div>
+        <div class="work-item" data-vimeo="1177559453" data-tab="main">
+          <div class="work-item-bg" style="background-image:url('https://i.vimeocdn.com/video/2141216441-5b9677385e180540630b5a371b6e204c10746b2f20327c9cb6b30dbb8432624b-d_1280?region=us')"></div>
           <div class="work-item-label">
             <div class="work-item-title">Project Update</div>
           </div>
           <div class="work-item-overlay"><div class="play-ring"></div></div>
         </div>
 
-        <!-- 8: Brand Film (today) — blue-collar -->
-        <div class="work-item" data-vimeo="1202914977" data-category="blue-collar">
-          <div class="work-item-bg"></div>
+        <div class="work-item" data-vimeo="1203935537" data-tab="main">
+          <div class="work-item-bg" style="background-image:url('https://i.vimeocdn.com/video/2172505173-da2b561c7c6d328a14f3933aa348718ec377e31548f15dab8e1c0020c2021b06-d_1280?region=us')"></div>
+          <div class="work-item-label">
+            <div class="work-item-title">Project Update</div>
+          </div>
+          <div class="work-item-overlay"><div class="play-ring"></div></div>
+        </div>
+
+        <div class="work-item" data-vimeo="1203935498" data-tab="main">
+          <div class="work-item-bg" style="background-image:url('https://i.vimeocdn.com/video/2174626319-eb77861d3b2890067ed32f5dd8419d10785cd66205a4587cf91d8dfdfadc0ffd-d_1280?region=us')"></div>
+          <div class="work-item-label">
+            <div class="work-item-title">Project Update</div>
+          </div>
+          <div class="work-item-overlay"><div class="play-ring"></div></div>
+        </div>
+
+        <div class="work-item" data-vimeo="1203936089" data-tab="main">
+          <div class="work-item-bg" style="background-image:url('https://i.vimeocdn.com/video/2172152868-8e7ddb3edfbe1fa6dadb479b86503832d223d0ca08b7bbe8366c32ae23819ec5-d_1280?region=us')"></div>
+          <div class="work-item-label">
+            <div class="work-item-title">Project Video</div>
+          </div>
+          <div class="work-item-overlay"><div class="play-ring"></div></div>
+        </div>
+
+        <div class="work-item" data-vimeo="1203936262" data-tab="main">
+          <div class="work-item-bg" style="background-image:url('https://i.vimeocdn.com/video/2174625613-626be79a1f0b952473f280413cd75cdbd0a6ea9e4a1a2dcc7416999b5f117883-d_1280?region=us')"></div>
+          <div class="work-item-label">
+            <div class="work-item-title">NYC Design Trip</div>
+          </div>
+          <div class="work-item-overlay"><div class="play-ring"></div></div>
+        </div>
+
+        <div class="work-item" data-vimeo="1203936340" data-tab="main">
+          <div class="work-item-bg" style="background-image:url('https://i.vimeocdn.com/video/2172154276-656cd326bdd36e1202cb2c4d5c3f338bff9c09f5c8036868c801e10e98afdb39-d_1280?region=us')"></div>
+          <div class="work-item-label">
+            <div class="work-item-title">JWAB Story</div>
+          </div>
+          <div class="work-item-overlay"><div class="play-ring"></div></div>
+        </div>
+
+        <div class="work-item" data-vimeo="1203937345" data-tab="main">
+          <div class="work-item-bg" style="background-image:url('https://i.vimeocdn.com/video/2172505834-1ee3e743cc3db48f002532257f43dd13ebddb33052b50f9eba4b9729f33c3157-d_1280?region=us')"></div>
+          <div class="work-item-label">
+            <div class="work-item-title">Project Highlight</div>
+          </div>
+          <div class="work-item-overlay"><div class="play-ring"></div></div>
+        </div>
+
+        <div class="work-item" data-vimeo="1177560549" data-tab="main">
+          <div class="work-item-bg" style="background-image:url('https://i.vimeocdn.com/video/2138921677-8d150ecec6ed60e9383154d242a463caaf93ccb73096e42af02cbfb5eebb0af3-d_1280?region=us')"></div>
+          <div class="work-item-label">
+            <div class="work-item-title">Podcast</div>
+          </div>
+          <div class="work-item-overlay"><div class="play-ring"></div></div>
+        </div>
+
+        <div class="work-item" data-vimeo="1202930062" data-tab="other">
+          <div class="work-item-bg" style="background-image:url('https://i.vimeocdn.com/video/2170803316-d79e4bfeab70c087d3b4f73080f9e3575d028acf18d73b16ce6c30ae270093e4-d_1280?region=us')"></div>
+          <div class="work-item-label">
+            <div class="work-item-title">Colleen Quigley</div>
+          </div>
+          <div class="work-item-overlay"><div class="play-ring"></div></div>
+        </div>
+
+        <div class="work-item" data-vimeo="1202914383" data-tab="other">
+          <div class="work-item-bg" style="background-image:url('https://i.vimeocdn.com/video/2170798416-2660f310720d3ce4948702b792409c6ce8599cfca06cbc104d2269691db955fb-d_1280?region=us')"></div>
+          <div class="work-item-label">
+            <div class="work-item-title">Joggy Commercial</div>
+          </div>
+          <div class="work-item-overlay"><div class="play-ring"></div></div>
+        </div>
+
+        <div class="work-item" data-vimeo="1177571259" data-tab="other">
+          <div class="work-item-bg" style="background-image:url('https://i.vimeocdn.com/video/2141215988-2ccdb8ea1385e2bb3d3c8f04b8fb7c2eb12872d35f928b6ead5a0db1959d3767-d_1280?region=us')"></div>
           <div class="work-item-label">
             <div class="work-item-title">Brand Film</div>
           </div>
           <div class="work-item-overlay"><div class="play-ring"></div></div>
         </div>
 
-        <!-- 9: Real Estate Short — real-estate-only (hidden from All) -->
-        <div class="work-item" data-vimeo="1202913930" data-category="real-estate-only">
-          <div class="work-item-bg"></div>
+        <div class="work-item" data-vimeo="1177575758" data-tab="other">
+          <div class="work-item-bg" style="background-image:url('https://i.vimeocdn.com/video/2141215873-635b4555a82d0c8c3f6bc524df9cb125319f54abdf633088c9214e826b8f0828-d_1280?region=us')"></div>
+          <div class="work-item-label">
+            <div class="work-item-title">Short Film</div>
+          </div>
+          <div class="work-item-overlay"><div class="play-ring"></div></div>
+        </div>
+
+        <div class="work-item" data-vimeo="1202913930" data-tab="other">
+          <div class="work-item-bg" style="background-image:url('https://i.vimeocdn.com/video/2170798089-f6d3942007fae9145bef794a40015be6f817c5767871c3e2a15b75211734b1e4-d_1280?region=us')"></div>
           <div class="work-item-label">
             <div class="work-item-title">Real Estate Short</div>
+          </div>
+          <div class="work-item-overlay"><div class="play-ring"></div></div>
+        </div>
+
+        <div class="work-item" data-vimeo="1202914829" data-tab="other">
+          <div class="work-item-bg" style="background-image:url('https://i.vimeocdn.com/video/2170798306-1f64d9668936c0193a88f2ebcb1eb03c430074e9a2588edecb388f2a7b4bce07-d_1280?region=us')"></div>
+          <div class="work-item-label">
+            <div class="work-item-title">Real Estate Film</div>
           </div>
           <div class="work-item-overlay"><div class="play-ring"></div></div>
         </div>
@@ -1279,37 +1288,19 @@
       navbar.classList.toggle('scrolled', window.scrollY > 80);
     });
 
-    // Hide real-estate-only items on initial load (All is default)
-    document.querySelectorAll('.work-item').forEach(item => {
-      if (item.dataset.category === 'real-estate-only') item.style.display = 'none';
-    });
-
-    // Filter buttons
-    const categoryMap = {
-      'All': null,
-      'Blue Collar': 'blue-collar',
-      'Adventure Sports': 'outdoor',
-      'Corporate': 'corporate',
-      'Real Estate': 'real-estate'
-    };
+    // Tab buttons: Our Work / Other
+    function applyTab(tab) {
+      document.querySelectorAll('.work-item').forEach(item => {
+        item.style.display = item.dataset.tab === tab ? '' : 'none';
+      });
+    }
+    applyTab('main'); // default view on load
 
     document.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-
-        const filterVal = categoryMap[btn.textContent.trim()];
-        document.querySelectorAll('.work-item').forEach(item => {
-          if (filterVal === null) {
-            // "All" — show everything except real-estate-only
-            item.style.display = item.dataset.category === 'real-estate-only' ? 'none' : '';
-          } else if (filterVal === 'real-estate') {
-            // Real Estate — show both real-estate and real-estate-only
-            item.style.display = (item.dataset.category === 'real-estate' || item.dataset.category === 'real-estate-only') ? '' : 'none';
-          } else {
-            item.style.display = item.dataset.category === filterVal ? '' : 'none';
-          }
-        });
+        applyTab(btn.dataset.tab);
       });
     });
 
